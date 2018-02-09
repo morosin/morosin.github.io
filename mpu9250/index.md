@@ -5,8 +5,6 @@ title: MPU-9250 Tutorial
     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-# MPU-9250 Tutorial
-
 ## Before we Start
 _Take a look at these other, harder-to-read documentations:_
 * [Datasheet](https://www.invensense.com/wp-content/uploads/2015/02/PS-MPU-9250A-01-v1.1.pdf)
@@ -164,10 +162,28 @@ either operate on scaled numbers or use floating-point arithmetic. It is Barry's
 commandment that you don't use floating-point arithmetic, but I offer a solution:
 if the device receiving the readings is a computer rather than an 8-bit
 microcontroller, move all the floating point arithmetic over there and only use the
-AVR for sending. Anyways, the actual rotational velocity, in _degrees per second_, is
+AVR for sendng. Anyways, the actual rotational velocity, in _degrees per second_, is
 equal to the product of the conversion scale and the 16-bit value read from the
 sensor. For example, to find the actual X rotational velocity at 250 DPS given the
 sensor value of `gyro_x`, we would use:
 ```c
 float velocity = gyro_x * (250.0f / 32768.0f);
 ```
+Now, you're probably wondering what you can do with this velocity measurement. The
+answer is, "not much."
+<img align="right" src="/images/nord2.jpg"/>
+Yeah, I get that look a lot. For most applications, you'll probably want to be 
+tracking an angle, not a rotational velocity. Luckily for you, that's where the
+calculus comes in.
+
+Sorry I said anything.
+<img src="/images/nord2.jpg"/>
+
+From basic physics we know that the position of an object $$p$$ is given with respect
+to time $$t$$ by the function $$p(t) = \int \! v(t) \mathrm{d}t$$ where $$v(t)$$ is
+the object's velocity. As a result, we know that the _displacement_ of the object
+at time $$t$$ is given by $$d(t) = int_0^t \! v(x) \mathrm{d}x$$. Assuming that we
+are sampling our gyroscope at a near-constant rate, we can use [Simpson's Rule](https://en.wikipedia.org/wiki/Simpson's_rule)
+to approximate the displacement. Therefore,
+$$d(t) \approx \frac{t}{6}(v(0) + 4v(\frac{t}{2}) + v(t))$$ is a valid approximation,
+although I have not measured the error it would entail.
