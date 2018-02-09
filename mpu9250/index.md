@@ -184,9 +184,12 @@ Sorry I said anything.
 
 From basic physics we know that the position of an object $$p$$ is given with respect
 to time $$t$$ by the function $$p(t) = \int \! v(t) \mathrm{d}t$$ where $$v(t)$$ is
-the object's velocity. As a result, we know that the _displacement_ of the object
-at time $$t$$ is given by $$d(t) = \int_0^t \! v(x) \mathrm{d}x$$. Assuming that we
-are sampling our gyroscope at a near-constant rate, we can use [Simpson's Rule](https://en.wikipedia.org/wiki/Simpson's_rule)
-to approximate the displacement. Therefore,
-$$d(t) \approx \frac{t}{6}(v(0) + 4v(\frac{t}{2}) + v(t))$$ is a valid approximation,
-although I have not measured the error it would entail.
+the object's velocity. Given the object's rotational velocity $$\frac{\mathrm{d}\theta}{\mathrm{d}t}$$,
+we can determine the object's angular displacement at time $$t$$ with 
+$$\Delta \theta = \int_0^t \! \frac{\mathrm{d}\theta}{\mathrm{d}t} \mathrm{d}t$$. Because
+our sampling interval is relatively constant, we can use a numeric method to approximate
+the angular displacement:
+$$\Delta \theta \approx \frac{\mathrm{d}\theta}{\mathrm{d}t} \Delta t$$
+Therefore, the object's angle $$\theta$$ is approximately equal to the sum of __every__
+angular displacement, given by the product of each rotational velocity sampled and the
+interval between each sample.
