@@ -13,6 +13,7 @@ The MPU9250 is a 9-axis accelerometer. This means that it has 3 axes of movement
 * a magnetometer (compass)
 
 The gyroscope axes are similar to this, because I had trouble picturing them.
+
 <img src="https://raw.githubusercontent.com/SeeedDocument/Grove-3-Axis_Digital_Gyro/master/img/Gyro_Reference_1.jpg" style="width: 200px;"/>
 
 ### Modes of Operation
@@ -139,7 +140,10 @@ int16_t x_accel = (high_byte << 8) | low_byte;
 The values recorded by the gyroscope are units of _rotational velocity_. The actual
 units, however, are determined by the resolution set in the `GYRO_CONFIG` bit. For
 any given DPS resolution `r`, the conversion scale is given by
-$$\frac{r}{32768.0f}$$. The actual rotational velocity, in _degrees per second_, is
+{% raw %}
+$$\frac{r}{32768.0f}$$. 
+{% endraw %}
+The actual rotational velocity, in _degrees per second_, is
 equal to the product of the conversion scale and the 16-bit value read from the
 sensor. For example, to find the actual X rotational velocity at 250 DPS given the
 sensor value of `gyro_x`, we would use:
