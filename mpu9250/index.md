@@ -185,7 +185,7 @@ Sorry I said anything.
 From basic physics we know that the position of an object $$p$$ is given with respect
 to time $$t$$ by the function $$p(t) = \int \! v(t) \mathrm{d}t$$ where $$v(t)$$ is
 the object's velocity. As a result, we know that the _displacement_ of the object
-at time $$t$$ is given by $$d(t) = int_0^t \! v(x) \mathrm{d}x$$. Assuming that we
+at time $$t$$ is given by $$d(t) = \int_0^t \! v(x) \mathrm{d}x$$. Assuming that we
 are sampling our gyroscope at a near-constant rate, we can use [Simpson's Rule](https://en.wikipedia.org/wiki/Simpson's_rule)
 to approximate the displacement. Therefore,
 $$d(t) \approx \frac{t}{6}(v(0) + 4v(\frac{t}{2}) + v(t))$$ is a valid approximation,
