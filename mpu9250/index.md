@@ -171,13 +171,13 @@ float velocity = gyro_x * (250.0f / 32768.0f);
 ```
 Now, you're probably wondering what you can do with this velocity measurement. The
 answer is, "not much."
-<img align="right" src="/images/nord2.jpg"/>
+<img align="right" src="https://raw.githubusercontent.com/morosin/morosin.github.io/master/images/nord2.jpg"/>
 Yeah, I get that look a lot. For most applications, you'll probably want to be 
 tracking an angle, not a rotational velocity. Luckily for you, that's where the
 calculus comes in.
 
 Sorry I said anything.
-<img src="/images/nord2.jpg"/>
+<img src="https://raw.githubusercontent.com/morosin/morosin.github.io/master/images/nord2.jpg"/>
 
 From basic physics we know that the position of an object $$p$$ is given with respect
 to time $$t$$ by the function $$p(t) = \int \! v(t) \mathrm{d}t$$ where $$v(t)$$ is
