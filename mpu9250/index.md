@@ -1,3 +1,6 @@
+---
+title: MPU-9250 Tutorial
+---
 <script type="text/javascript" async
     src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
@@ -156,7 +159,12 @@ int16_t x_accel = (high_byte << 8) | low_byte;
 The values recorded by the gyroscope are units of _rotational velocity_. The actual
 units, however, are determined by the resolution set in the `GYRO_CONFIG` bit. For
 any given DPS resolution `r`, the conversion scale is given by
-$$\frac{r}{32768.0f}$$. The actual rotational velocity, in _degrees per second_, is
+$$\frac{r}{32768.0}$$. Remember that this number will be less than one, so you must 
+either operate on scaled numbers or use floating-point arithmetic. It is Barry's 
+commandment that you don't use floating-point arithmetic, but I offer a solution:
+if the device receiving the readings is a computer rather than an 8-bit
+microcontroller, move all the floating point arithmetic over there and only use the
+AVR for sending. Anyways, the actual rotational velocity, in _degrees per second_, is
 equal to the product of the conversion scale and the 16-bit value read from the
 sensor. For example, to find the actual X rotational velocity at 250 DPS given the
 sensor value of `gyro_x`, we would use:
