@@ -1,3 +1,7 @@
+<script type="text/javascript" async
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
 # MPU-9250 Tutorial
 
 ## Before we Start
@@ -28,7 +32,19 @@ For initial testing, it may be easier to use a UART transmitting function to sen
 readings to a more friendly display.
 
 ## Usage
-### General 
+### General
+#### Circut
+Setting up the MPU9250 for SPI communication can be a bit tricky because the pinout
+is labeled for I<sub>2</sub>C communication. Here is a translation of the pinout
+labels:
+
+* `NCS` stands for "negative chip select," which is equivalent to the SPI `CSN` pin.
+* `SCL` - "serial clock," replaces `SCK`.
+* `AD0` - serial output, replaces `MISO`.
+* `SDA` - serial input, replaces `MOSI`.
+
+Aside from `VCC` and `GND`, you shouldn't need to use any more connections. 
+
 #### Register IO
 Registers are addressed by a value from 0 to 128, as described in the register
 map linked above. The most significant bit of the transacted byte determines 
@@ -140,10 +156,7 @@ int16_t x_accel = (high_byte << 8) | low_byte;
 The values recorded by the gyroscope are units of _rotational velocity_. The actual
 units, however, are determined by the resolution set in the `GYRO_CONFIG` bit. For
 any given DPS resolution `r`, the conversion scale is given by
-{% raw %}
-$$\frac{r}{32768.0f}$$. 
-{% endraw %}
-The actual rotational velocity, in _degrees per second_, is
+$$\frac{r}{32768.0f}$$. The actual rotational velocity, in _degrees per second_, is
 equal to the product of the conversion scale and the 16-bit value read from the
 sensor. For example, to find the actual X rotational velocity at 250 DPS given the
 sensor value of `gyro_x`, we would use:
