@@ -13,7 +13,7 @@ The MPU9250 is a 9-axis accelerometer. This means that it has 3 axes of movement
 * a magnetometer (compass)
 
 The gyroscope axes are similar to this, because I had trouble picturing them.
-<!--img src="https://raw.githubusercontent.com/SeeedDocument/Grove-3-Axis_Digital_Gyro/master/img/Gyro_Reference_1.jpg" style="width: 200px;"/-->
+<img src="https://raw.githubusercontent.com/SeeedDocument/Grove-3-Axis_Digital_Gyro/master/img/Gyro_Reference_1.jpg" style="width: 200px;"/>
 
 ### Modes of Operation
 MPU9250 usage is either __poll-driven__ or __interrupt-driven__. I'll be going
