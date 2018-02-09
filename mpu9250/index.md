@@ -185,8 +185,8 @@ Sorry I said anything.
 From basic physics we know that the position of an object $$p$$ is given with respect
 to time $$t$$ by the function $$p(t) = \int \! v(t) \mathrm{d}t$$ where $$v(t)$$ is
 the object's velocity. Given the object's rotational velocity $$\frac{\mathrm{d}\theta}{\mathrm{d}t}$$,
-we can determine the object's angular displacement at time $$t$$ with 
-$$\Delta \theta = \int_0^t \! \frac{\mathrm{d}\theta}{\mathrm{d}t} \mathrm{d}t$$. Because
+we can determine the object's angular displacement from $$t_0$$ to $$t_1$$ with 
+$$\Delta \theta = \int_{t_0}^{t_1} \! \frac{\mathrm{d}\theta}{\mathrm{d}t} \mathrm{d}t$$. Because
 our sampling interval is relatively constant, we can use a numeric method to approximate
 the angular displacement:
 $$\Delta \theta \approx \frac{\mathrm{d}\theta}{\mathrm{d}t} \Delta t$$
