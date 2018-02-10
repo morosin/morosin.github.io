@@ -9,6 +9,9 @@ title: MPU-9250 Tutorial
 _Take a look at these other, harder-to-read documentations:_
 * [Datasheet](https://www.invensense.com/wp-content/uploads/2015/02/PS-MPU-9250A-01-v1.1.pdf)
 * [Register Map](https://stanford.edu/class/ee267/misc/MPU-9255-Register-Map.pdf)
+### Topics you should be familiar with:
+* SPI
+* Basic numeric integration (not necessary in practice, just in theory)
 
 ## Introduction
 ### What is it?
@@ -162,7 +165,7 @@ either operate on scaled numbers or use floating-point arithmetic. It is Barry's
 commandment that you don't use floating-point arithmetic, but I offer a solution:
 if the device receiving the readings is a computer rather than an 8-bit
 microcontroller, move all the floating point arithmetic over there and only use the
-AVR for sendng. Anyways, the actual rotational velocity, in _degrees per second_, is
+AVR for sending. Anyways, the actual rotational velocity, in _degrees per second_, is
 equal to the product of the conversion scale and the 16-bit value read from the
 sensor. For example, to find the actual X rotational velocity at 250 DPS given the
 sensor value of `gyro_x`, we would use:
@@ -193,3 +196,73 @@ $$\Delta \theta \approx \frac{\mathrm{d}\theta}{\mathrm{d}t} \Delta t$$
 Therefore, the object's angle $$\theta$$ is approximately equal to the sum of __every__
 angular displacement, given by the product of each rotational velocity sampled and the
 interval between each sample.
+
+A few things to watch out for:
+
+* Dropping a single velocity sample will make your angular measurement unusable. 
+
+### Error Correction
+When using any sort of sensor like this, especially if it's cheaper (ordered on eBay, 
+from China), you'll have to do some things to correct for noise in readings. When
+working with a gyroscope, this noise is called 'drift' and can be measured in the 
+angular displacement reported over a unit time where the sensor was motionless (i.e.
+$$\frac{1}{t_1 - t_0} \Delta \theta$$). You'll most likely need several approaches to
+effectively compensate for sensor noise. These sorts of filters should be applied to
+the raw data read from the sensor to minimize buffering of data within the microcontroller's
+limited memory.
+
+#### Determining Drift/Accuracy
+Before you use any sensor for anything, you need to know exactly how accurate the sensor
+is. Luckily, testing accuracy is relatively easy. 
+- Find a way to report values from the sensor. This is most easily achieved via a UART
+connection. Be cautious, however, that the time spent on a UART transaction doesn't result
+in a significant backlog of actual sensor readings, because this will influence your
+calculations. 
+- Instruct your AVR to report the value of the sensor at a fixed interval and with each
+transmission send some sort of value based on time. It's okay to use the 16-bit timer
+for this, but when reviewing your data you have to be able to account for timer overflows.
+- Set the sensor down in a stationary environment.
+- Record the sensor's values over a significant amount of time (10 minutes or more).
+- Relate the time elapsed from whichever value you transmitted to seconds.
+- Determine the total, absolute positional change based across that time period.
+
+#### Highpass Filter
+_Highpass_ and _lowpass_ filters are common, simple filters with conveniently self-explanatory
+names. A highpass filter of $$h$$ will only allow sensor values higher than $$h$$ to pass, with
+a lowpass filter operating on a similar concept. Because all of the sensors on the MPU9250
+operate using signed values, it is important that the highpass filter affects values for which
+their absolute value is less than the threshold. For example, a highpass filter of 45 could be
+applied with:
+```c
+#define highpass(threshold, val) (abs(val) > (threshold) ? val : 0)
+```
+Remember that you should zero values that don't pass the filter, not remove them from calculations
+altogether. 
+
+_How do I figure out what value to use as my threshold?_ you ask. Well, for example, the MPU9250
+gyroscope operates at a relatively consistent level of background noise - nonzero values are
+reported when the gyro is stationary. Unfortunately, this value not only varies based on 
+circumstance but more directly by the resolution you choose to operate the sensor at. For this,
+you can determine the background noise threshold programmatically:
+```c
+int16_t get_background_threshold() {
+    int16_t avg = 0; // Store a rolling average.
+    for (uint8_t i = 0; i < SAMPLES; ++i) { // Count up to a specific number of samples.
+        avg = (avg * (i - 1) + read_gyro(GYRO_XOUT_H, GYRO_XOUT_L)) / i; // Add a new sample to the average.
+    }
+    return avg; // return the average value.
+}
+```
+
+If a similar routine to this is ran at startup, we can obtain a general margin for error. Of 
+course, you have to be very careful - a value too high will prevent the sensor from reading
+very slow movements. 
+
+#### Rolling Average
+_How do I implement something like this?_ you ask? Luckily for you, you just did. In finding the
+average background noise for a sensor across a predetermined number of samples, you compensated
+for the variation between samples. Essentially, up to a reasonable number, you update an average
+of the past $$n$$ samples and reset it when that reasonable number is reached. The most important
+concern is that this will affect the resolution of your sensor, but not the sampling interval. 
+Because an average calculation is made for each reading from the sensor, the average value at any
+given time can be used in place of the actual reading.
