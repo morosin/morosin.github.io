@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chapter 4 Assignment 1</title>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+    </script>
+    $\newcommand{\uvec}[1]{\boldsymbol{\hat{\textbf{#1}}}}$
+    $\newcommand{\diff}[2]{\frac{\mathrm{d}#1}{\mathrm{d}#2}}$
+    $\newcommand{\comp}[2]{\mathrm{comp}_{#1}#2}$
+    $\newcommand{\proj}[2]{\mathrm{proj}_{#1}#2}$
+    $\newcommand{\orth}[2]{\mathrm{orth}_{#1}#2}$
+</head>
+<body>
+<ol start="9">
+    <li>
+        <ul style="list-style: none;">
+            <li>$\vec{r}(t) = \langle 1, 4t^2, t \rangle$</li>
+            <li>$\vec{v}(t) = \vec{r'}(t) = \langle 0, 8t, 1 \rangle$</li>
+            <li>$\vec{a}(t) = \vec{r''}(t) = \langle 0, 8, 0 \rangle$</li>
+        </ul>
+    </li>
+</ol>
+<ol start="17">
+    <li>
+        <ul style="list-style: none;">
+            <li>$\Delta x = 30$ meters</li>
+            <li>$\Delta y = 0.019$ meters</li>
+            <li>$\theta = \mathrm{arctan}(-\frac{0.019}{30}) = -0.03629°$</li>
+            <li>$-\frac{g}{2}t^2 = 0.019$</li>
+            <li>$t = 0.0623$ seconds of air time.</li>
+            <li>$30 = \frac{v_0^2 sin(2\theta)}{g}$</li>
+            <li>$v_0 = \sqrt{3.06(0.01)}$</li>
+            <li><span style="color: red">Obviously this is a very small answer, I don't know why.</span></li>
+        </ul>
+    </li>
+</ol>
+<ol start="22">
+    <li>
+        <ul style="list-style: none;">
+            <li>optimal $\theta = 45°$</li>
+            <li>$\Delta x = \frac{9.5^2 \mathrm{sin}(90°)}{9.8}$</li>
+            <li>$ = 9.209$ meters, a difference of $0.259$ meters.</li>
+        </ul>
+    </li>
+</ol>
+<ol start="28">
+    <li>
+        <ul style="list-style: none;">
+            <li>$\vec{v}(t) = \langle 25 \mathrm{cos}(40), 25 \mathrm{sin}(40) \rangle$</li>
+            <li>$ = \langle 19.75, 16.07 - 9.8t\rangle$</li>
+            <li>$\vec{r}(t) = \langle 19.75t, 16.07t - 4.9t^2 \rangle$</li>
+            <li>$\Delta x = 22$ meters</li>
+            <li>$22 = 19.75t$</li>
+            <li>$t_{impact} = 1.114$ seconds</li>
+            <li>$\Delta y = 16.07(1.114) - 4.9(1.114)^2$</li>
+            <li><b>a.</b> $ = 11.821$ meters</li>
+            <li><b>b.</b> $\vec{v}(1.114) = \langle 19.75, 5.1528 \rangle$</li>
+            <li><span style="color: red">Off by only a small margin, perhaps there was a rounding difference.</span></li>
+            <li><b>c.</b> no, velocity is not zero.</li>
+        </ul>
+    </li>
+</ol>
+<ol start="37">
+    <li>
+        <ul style="list-style: none;">
+            <li>$\theta = -37$</li>
+            <li>$\Delta y = -730$ meters</li>
+            <li>$t_{impact} = 5$</li>
+            <li>$-730 = -4.8(5)^2 + |\vec{v_0}| \mathrm{sin}(-37)(5)$</li>
+            <li><b>a.</b> $|\vec{v_0}| = 202.725 \frac{m}{s}$</li>
+            <li>$\Delta x = 202.725 \mathrm{cos}(-37)(5)$</li>
+            <li><b>b.</b> $ = 809.48$ meters</li>
+            <li>$\vec{v}(5) = \langle 202.725(5), 9.8(5) + 202.725 (-0.6018)$</li>
+            <li><b>c/d.</b> $ = \langle 161.896, -72.9999 \rangle$</li>
+        </ul>
+    </li>
+</ol>
+<ol start="82">
+    <li>
+        <ul style="list-style: none;">
+            <li>$9400 = \mathrm{cos}(35) v_0 t = 0.819 v_0 t$</li>
+            <li>$0 = 3300 - 4.8t^2 + v_0 \mathrm{sin}(35)t = 3300 - 4.8t^2 + 0.5735 v_0 t$</li>
+            <li>$v_0 = \frac{11477}{t}$</li>
+            <li>$3300 -4.8t^2 + 0.5735(11477)$</li>
+            <li><b>b.</b> $t = 45.374$ seconds</li>
+            <li><b>a.</b> $v_0 = \frac{9400}{0.819(45.374)} = 252.951$ seconds</li>
+            <li><b>c.</b> It would have to increase because air resistance would slow the projectile faster.</li>
+        </ul>
+    </li>
+    <li>
+        <ul style="list-style: none;">
+            <li>$\vec{r}(t) = \langle 21t, 36.373t - 4.8t^2$</li>
+            <li><b>a.</b> $\comp{\uvec{j}}{\vec{r}(5.50} = 61.865$ meters</li>
+            <li>$\vec{v}(t) = \langle 21, 36.373 - 9.8t$</li>
+            <li>$\vec{v}(5.50) = \langle 21, -17.527$</li>
+            <li><b>b.</b> $|\vec{v}(5.5)| = 27.3532 \frac{m}{s}$</li>
+            <li>$36.373 - 9.8t = 0 → $ the curve has a maximum at $t = 3.711$ seconds.</li>
+            <li><b>c.</b> $\comp{\uvec{j}}{\vec{r}(3.711)} = 70.227$ meters</li>
+        </ul>
+    </li>
+</ol>
+</body>
+</html>
