@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chapter 4 Assignment 2</title>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+    </script>
+    $\newcommand{\uvec}[1]{\boldsymbol{\hat{\textbf{#1}}}}$
+    $\newcommand{\diff}[2]{\frac{\mathrm{d}#1}{\mathrm{d}#2}}$
+    $\newcommand{\comp}[2]{\mathrm{comp}_{#1}#2}$
+    $\newcommand{\proj}[2]{\mathrm{proj}_{#1}#2}$
+    $\newcommand{\orth}[2]{\mathrm{orth}_{#1}#2}$
+    $\newcommand{\deg}{^\circ}$
+
+    <style type="text/css">
+        ul {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<h3><b>Page 70:</b></h3>
+<ol start="45">
+    <li>
+        <ul>
+            <li>$r = 5$ meters</li>
+            <li>
+                <ol type="a">
+                    <li>
+                        <ul>
+                            <li>$|\vec{a}| = 7$</li>
+                            <li>$\sqrt{r|\vec{a}|} = |\vec{v}|$</li>
+                            <li>$\sqrt{5(7)(9.8)} \approx 18.52 \frac{m}{s}$</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul>
+                            <li>$\frac{|\vec{v}|}{2 \pi r} = \frac{1}{T}$</li>
+                            <li>$\frac{1}{T} = \frac{18.52}{10\pi} \approx 0.5895$ revolutions per second $= 35.37$ rpm</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul>
+                            <li>$\frac{1}{0.5895} \approx 1.696$ seconds per revolution.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </li>
+        </ul>
+    </li>
+</ol>
+
+<ol start="55">
+    <li>
+        <ul>
+            <li>Assuming constant velocity, $\vec{v}_{PG} = \langle \frac{15}{90} \rangle = 0.167\uvec{i}$</li>
+            <li>$\vec{v}_{EG} = 0.25\uvec{i}$</li>
+            <li>The sum of the velocities is $0.417\uvec{i}\frac{m}{s}$</li>
+            <li>So $\frac{15m}{0.417} \approx 35.97$ seconds, which depends on the length of the escalator.</li>
+        </ul>
+    </li>
+</ol>
+<ol start="58">
+    <li>
+        <ol type="a">
+            <li>
+                <ul>
+                    <li>$\vec{v}_{MP} = \vec{v}_{MI} + \vec{v}_{IP}$</li>
+                    <li>$ = 80\uvec{i} - 60\uvec{j}$</li>
+                </ul>
+            </li>
+            <li>The vector has the same direction as the line of sight from $M$ to $P$</li>
+            <li>No, it does not change.</li>
+        </ol>
+    </li>
+</ol>
+
+<h3><b>Problem Supplement:</b></h3>
+<ol>
+    <li> <!-- Problem 1 -->
+        <ol type="a">
+            <li>
+                <ul>
+                    <li>$\vec{v}_{BW\uvec{j}} = 6\uvec{j} = \vec{v}_{BG} + \vec{v}_{GW}$</li>
+                    <li>$\vec{v}_{BW\uvec{-j}} = -24\uvec{j} = \vec{v}_{BG} - \vec{v}_{GW}$</li>
+                    <li>$|\vec{v}_{BG}| = 15$ mph</li>
+                </ul>
+            </li>
+            <li>$\vec{v}_{WG} = -24\uvec{j} + 15 = -9\uvec{j}$</li>
+            <li>
+                <ul>
+                    <li>$\vec{v} = 15 \mathrm{cos}(36.87\deg)\uvec{i} + 15 \mathrm{sin}(36.87\deg)\uvec{j}$</li>
+                    <li>$ = 12\uvec{i} + 9\uvec{j}$</li>
+                </ul>
+            </li>
+            <li>Because the $\uvec{j}$ component of the boat's velocity cancels with the $\uvec{j}$ component of the river velocity, $\vec{v}_{BG} = 12\uvec{i}$</li>
+            <li>$\frac{1}{12} = 0.833$ hours or $5$ minutes.</li>
+            <li>You cross exactly horizontally.</li>
+            <li>$0\deg$ such that the entirety of the boat's velocity is in the $\uvec{i}$ direction.</li>
+            <li>
+                <ul>
+                    <li>$|\vec{v}| = \sqrt{15^2 + 9^2} \approx 17.49$</li>
+                    <li>$\frac{1}{17.49} = 3$ minutes $26$ seconds.</li>
+                </ul>
+            </li>
+            <li>$\frac{9}{17.49} \approx 0.514$ miles downstream.</li>
+        </ol>
+        <br>
+    </li>
+
+    <li> <!-- Problem 2 -->
+        <ul>
+            <li>$20\mathrm{cos}(\theta)\uvec{i} + 20\mathrm{cos}(\theta)\uvec{j} - 15\uvec{j} = \vec{v}$</li>
+            <li>$\mathrm{arcsin}(\frac{15}{20}) \approx 48.59\deg$</li>
+        </ul>
+        <br>
+    </li>
+
+    <li> <!-- Problem 3 -->
+        <ol type="a">
+            <li>$|\vec{v}| = \sqrt{150} \approx 12.247$ mph</li>
+            <li>$\vec{v}_{AG} = \langle 5, 5, 10 \rangle + \langle 1, 4, 8 \rangle = 6\uvec{i} + 9\uvec{j} + 18\uvec{k}$</li>
+            <li>$\vec{v}_{FA} = \langle -2, -5, -56 \rangle - \vec{v}_{AG} = -8\uvec{i} - 14\uvec{j} - 74\uvec{k}$</li>
+            <li>$|\vec{v}_{FA}| = 75.736$ mph</li>
+        </ol>
+        <br>
+    </li>
+    <li> <!-- Problem 4 -->
+        <ul>
+            <li>$\vec{r}(t) = \langle 200 \mathrm{cos}(20\deg)t, -4.9t^2 + 200\mathrm{cos}(20\deg)t \rangle$</li>
+            <li>$ = \langle 187.9t, -4.9t^2 + 68.4t \rangle$</li>
+            <li>Air Time: $12.596$ seconds</li>
+            <li>$\Delta x = 12.596(187.9) = 2366.788$ meters</li>
+            <li>$\Delta x_T = \frac{1.25}{2}t^2 + 2000$</li>
+            <li>$0.75t^2 + 2000 = 2366.788$</li>
+            <li>$t = 22.115$ seconds</li>
+            <li>If we subtract the air time $12.596$, we get $9.519$ seconds.</li>
+        </ul>
+        <br>
+    </li>
+
+    <li>
+        <ol type="a">
+            <li>$6.4\mathrm{sin}(\theta) = 3.2 \implies \theta = 30\deg$</li>
+            <li>$6.4 = 6.4\mathrm{cos}(30\deg)t \implies \frac{2}{\sqrt{3}} = 1.15$ hours.$</li>
+            <li>$\frac{3.2}{9.6} + \frac{3.2}{3.2} = 1.33$ hours</li>
+            <li>Same as above because you just add the times in the opposite order, so $1.33$ hours</li>
+            <li>$\theta = 0\deg, \frac{6.4}{6.4} = 1$ hour.</li>
+
+        </ol>
+    </li>
+</ol>
+</body>
+</html>
