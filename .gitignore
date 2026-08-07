@@ -6,3 +6,8 @@
 *.pdf
 *.synctex.gz
 build/
+site/build/
+.spelling.dic
+.cache/
+.clangd
+

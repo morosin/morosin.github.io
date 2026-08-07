@@ -1,0 +1,3 @@
+[submodule "site/htxx"]
+	path = site/htxx
+	url = https://github.com/hypertextxx/htxx.git
