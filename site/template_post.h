@@ -12,11 +12,9 @@ inline constexpr auto post_preamble = std::define_static_string(R"(\documentclas
 \usepackage{indentfirst}
 \usepackage{hanging}
 \usepackage{titlesec}
-\usepackage[document]{ragged2e}
 \usepackage{hyperref}
 
 \setlength{\parindent}{0pt}
-\setlength{\RaggedRightParindent}{0pt}
 \setlength{\parskip}{0pt}
 
 \renewcommand{\labelitemi}{\(\hookrightarrow\)}

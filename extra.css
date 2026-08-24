@@ -2,6 +2,11 @@ body {
     font-size: 11pt;
     color-scheme: normal;
     background-color: whitesmoke;
+    text-align: justify;
+}
+
+pre {
+    text-align: left !important;
 }
 
 a {

@@ -7,6 +7,7 @@
 *.synctex.gz
 build/
 site/build/
+site/Makefile
 .spelling.dic
 .cache/
 .clangd

@@ -1,8 +1,6 @@
-POSTS=$(shell find src/posts -name *.tex -exec basename {} .tex \; | sort | tac)
+.PHONY: all clean test site
 
-.PHONY: all clean test
-
-all: index.html
+all: index.html site
 	mkdir -p build
 
 index.html: src/index.tex
@@ -15,3 +13,10 @@ clean:
 
 test:
 	python3 -m http.server 8080
+
+site:
+	cd site; \
+	cmake --build build/; \
+	./build/morosin_github_io_site > index.html; \
+	make;
+

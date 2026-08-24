@@ -3,6 +3,7 @@
 #include <htxx/css.h>
 #include <filesystem>
 #include <fstream>
+#include <iterator>
 #include <print>
 #include "post.h"
 #include "template_post.h"
@@ -87,12 +88,48 @@ static void create_post_dir(const post& p, const std::filesystem::path& path) {
     tex_file.replace_extension("tex");
     
     std::ofstream of{ tex_file };
+    std::ostream_iterator<char> it{ of };
+    
     if (of.is_open()) {
-        of << post_preamble;
-        of << "\\title{" << p.hed << "}\n";
-        of << "\\date{" << p.date << "}\n";
-        of << "\\begin{document}\n\n\\end{document}\n";
+        std::format_to(it, R"(
+{}
+\title{{{}}}
+\date{{{}}}
+\begin{{document}}
+
+
+\end{{document}}
+
+)", post_preamble, p.hed, p.date);
     }    
+}
+
+template <class = void> constexpr void create_makefile() {
+    const std::filesystem::path makefile_path{ std::filesystem::current_path()/"Makefile" };
+    const auto& [...posts] = site_posts;
+    std::filesystem::remove(makefile_path);
+    std::ofstream ofs{ makefile_path };
+
+    if (!ofs.is_open()) { std::println(stderr, "error opening Makefile"); return; }
+    std::ostream_iterator<char> it{ ofs };
+
+    std::format_to(it, R"(
+.PHONY: all
+all: )");
+    (std::format_to(it, "{}/index.html ", posts.encoded_name), ...);
+
+    (std::format_to(it, R"(
+
+{0}/index.html: {0}/{0}.tex
+	cd {0}; \
+	cp *.bib ../build/; \
+	cp *.png ../build/; \
+	cd ../build/; \
+	ebb -x *.png; \
+	make4ht -s -c ../htstyle.cfg -d ../{0}/ ../{0}/{0}.tex "fn-in,mathml"; \
+	mv ../{0}/{0}.html ../{0}/index.html;
+
+)", posts.encoded_name), ...); 
 }
 
 int main(int argc, char* argv[]) {
@@ -104,6 +141,8 @@ int main(int argc, char* argv[]) {
             create_post_dir(p, post_dir);
         }
     }
+
+    create_makefile();
     
     std::println("{}", index_html());
     return 0;
