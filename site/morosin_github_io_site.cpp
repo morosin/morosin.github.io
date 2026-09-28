@@ -96,7 +96,7 @@ static void create_post_dir(const post& p, const std::filesystem::path& path) {
 \title{{{}}}
 \date{{{}}}
 \begin{{document}}
-
+\maketitle
 
 \end{{document}}
 
@@ -122,13 +122,11 @@ all: )");
 
 {0}/index.html: {0}/{0}.tex
 	cd {0}; \
-	cp *.bib ../build/; \
-	cp *.png ../build/; \
-	cd ../build/; \
-	ebb -x *.png; \
-	make4ht -s -c ../htstyle.cfg -d ../{0}/ ../{0}/{0}.tex "fn-in,mathml"; \
-	mv ../{0}/{0}.html ../{0}/index.html;
-
+	mkdir -p build; \
+	latex -interaction=nonstopmode -jobname index -output-format=dvi -output-dir=build/ -draftmode {0}.tex; \
+	biber build/index.bcf; \
+	make4ht -s -B build -c ../htstyle.cfg -d . -j index {0}.tex "fn-in,mathml,Gin-percent,charset=utf-8" "-utf8"; \
+	rm -rf build/;
 )", posts.encoded_name), ...); 
 }
 

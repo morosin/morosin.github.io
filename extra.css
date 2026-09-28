@@ -1,7 +1,19 @@
+@font-face {
+    font-family: "New Computer Modern";
+    src: url("/NewCM10-Book.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "New Computer Modern";
+    font-weight: bold;
+    src: url("/NewCM10-Bold.otf") format("opentype");
+}
+
 body {
-    font-size: 11pt;
+    font-family: "New Computer Modern";
+    font-size: 12pt;
     color-scheme: normal;
-    background-color: whitesmoke;
+    background-color: #fffffc;
     text-align: justify;
 }
 
@@ -17,5 +29,31 @@ a {
 a:not(.plain-anchor) {
     color: #f43753;
     font-weight: bold;
+}
+
+.note-overlay {
+    position: fixed;
+    width: 80ch;
+    height: 100%;
+    z-index: 800;
+    color: none;
+    background: rgba(0, 0, 0, 0.2);
+    border: none;
+    padding: 0px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.note-wrapper {
+    position: absolute;
+    max-height: 15em;
+    min-height: 5em;
+    width: 100%;
+    color: black;
+    background: white;
+    bottom: 0px;
+    overflow-x: visible;
+    overflow-y: scroll;
+    pointer-events: visible;
 }
 
