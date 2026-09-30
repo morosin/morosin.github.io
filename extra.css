@@ -33,15 +33,22 @@ a:not(.plain-anchor) {
 
 .note-overlay {
     position: fixed;
-    width: 86ch;
+    width: 100vw;
     height: 100%;
     z-index: 800;
     color: none;
     background: rgba(0, 0, 0, 0.2);
     border: none;
     padding: 0px;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: visible;
     pointer-events: none;
+}
+
+.note-overlay:popover-open {
+    display: flex;
+    align-items: end;
+    justify-content: center;
 }
 
 .note-wrapper {
@@ -49,12 +56,12 @@ a:not(.plain-anchor) {
     padding: 1ch;
     max-height: 15em;
     min-height: 5em;
-    width: 84ch;
+    width: min(80ch, 96vw);
     color: black;
     background: white;
     bottom: 0px;
     overflow-x: visible;
     overflow-y: scroll;
-    pointer-events: visible;
+    pointer-events: visible; 
 }
 
