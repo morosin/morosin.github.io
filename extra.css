@@ -33,7 +33,7 @@ a:not(.plain-anchor) {
 
 .note-overlay {
     position: fixed;
-    width: 80ch;
+    width: 86ch;
     height: 100%;
     z-index: 800;
     color: none;
@@ -46,9 +46,10 @@ a:not(.plain-anchor) {
 
 .note-wrapper {
     position: absolute;
+    padding: 1ch;
     max-height: 15em;
     min-height: 5em;
-    width: 100%;
+    width: 84ch;
     color: black;
     background: white;
     bottom: 0px;
