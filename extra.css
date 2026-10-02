@@ -1,16 +1,33 @@
-@font-face {
-    font-family: "New Computer Modern";
-    src: url("/NewCM10-Book.otf") format("opentype");
+@font-face { 
+    font-family: rmfamily;
+    src: local("Latin Modern"), url('/NewCM10-Book.otf');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-    font-family: "New Computer Modern";
+    font-family: rmfamily;
+    src: local("Latin Modern"), url('../../NewCM10-Bold.otf');
     font-weight: bold;
-    src: url("/NewCM10-Bold.otf") format("opentype");
+    font-style: normal;
+}
+
+@font-face {
+    font-family: rmfamily;
+    src: local("Latin Modern"), url('../../NewCM10-BookItalic.otf');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face { 
+    font-family: rmfamily;
+    src: local("Latin Modern"), url('../../NewCM10-BoldItalic.otf');
+    font-weight: bold;
+    font-style: italic;
 }
 
 body {
-    font-family: "New Computer Modern";
+    font-family: "rmfamily";
     font-size: 12pt;
     color-scheme: normal;
     background-color: #fffffc;

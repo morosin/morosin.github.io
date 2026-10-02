@@ -1,51 +1,41 @@
  
 /* start css.sty */
-.cmr-5{font-size:50%;}
-.cmr-7{font-size:70%;}
-.cmmi-5{font-size:50%;font-style: italic;}
-.cmmi-7{font-size:70%;font-style: italic;}
-.cmmi-10{font-style: italic;}
-.cmsy-5{font-size:50%;}
-.cmsy-7{font-size:70%;}
-.cmbsy-10{font-weight: bold;}
-.cmbsy-10{font-weight: bold;}
-.cmbsy-10{font-weight: bold;}
-.cmbsy-7{font-size:70%;font-weight: bold;}
-.cmbsy-7{font-weight: bold;}
-.cmbsy-7{font-weight: bold;}
-.cmbsy-5{font-size:50%;font-weight: bold;}
-.cmbsy-5{font-weight: bold;}
-.cmbsy-5{font-weight: bold;}
-.cmex-7{font-size:70%;}
-.cmex-7x-x-71{font-size:49%;}
-.msam-7{font-size:70%;}
-.msam-5{font-size:50%;}
-.msbm-7{font-size:70%;}
-.msbm-5{font-size:50%;}
-.ecrm-1728{font-size:170%;}
-.ecrm-1200{font-size:120%;}
-.ecti-1000{ font-style: italic;}
-.ecti-1000{ font-style: italic;}
-.ecti-1000{ font-style: italic;}
-.ecti-1000{ font-style: italic;}
-.ecti-1000{ font-style: italic;}
-.ecti-1000{ font-style: italic;}
-.ecti-1000{ font-style: italic;}
-.ecti-1000{ font-style: italic;}
-.ecti-1000{ font-style: italic;}
-.ecrm-0900{font-size:90%;}
-.ecrm-0800{font-size:80%;}
-.ecti-0800{font-size:80%; font-style: italic;}
-.ecti-0800{ font-style: italic;}
-.ecti-0800{ font-style: italic;}
-.ecti-0800{ font-style: italic;}
-.ecti-0800{ font-style: italic;}
-.ecti-0800{ font-style: italic;}
-.ecti-0800{ font-style: italic;}
-.ecti-0800{ font-style: italic;}
-.ecti-0800{ font-style: italic;}
-.ecrm-0700{font-size:70%;}
-.ecrm-0500{font-size:50%;}
+.rm-lmr-10x-x-109{}
+.cmbsy-10x-x-109{font-weight: bold;}
+.cmbsy-10x-x-109{font-weight: bold;}
+.cmbsy-10x-x-109{font-weight: bold;}
+.cmbsy-8{font-size:72%;font-weight: bold;}
+.cmbsy-8{font-weight: bold;}
+.cmbsy-8{font-weight: bold;}
+.cmbsy-6{font-size:54%;font-weight: bold;}
+.cmbsy-6{font-weight: bold;}
+.cmbsy-6{font-weight: bold;}
+.cmex-10x-x-109{}
+.cmex-8{font-size:72%;}
+.cmex-7x-x-85{font-size:54%;}
+.msam-10x-x-109{}
+.msam-10x-x-80{font-size:72%;}
+.msam-7x-x-85{font-size:54%;}
+.msbm-10x-x-109{}
+.msbm-10x-x-80{font-size:72%;}
+.msbm-7x-x-85{font-size:54%;}
+.cmr-10x-x-109{}
+.cmr-8{font-size:72%;}
+.cmr-6{font-size:54%;}
+.cmmi-10x-x-109{font-style: italic;}
+.cmmi-8{font-size:72%;font-style: italic;}
+.cmmi-6{font-size:54%;font-style: italic;}
+.cmsy-10x-x-109{}
+.cmsy-8{font-size:72%;}
+.cmsy-6{font-size:54%;}
+.rm-lmr-17{font-size:154%;}
+.rm-lmr-12{font-size:109%;}
+.rm-lmri-10x-x-109{ font-style:italic;}
+.rm-lmr-10{font-size:90%;}
+.rm-lmr-9{font-size:81%;}
+.rm-lmri-9{font-size:81%; font-style:italic;}
+.rm-lmr-8{font-size:72%;}
+.rm-lmr-6{font-size:54%;}
 p{margin-top:0;margin-bottom:0}
 p.indent{text-indent:0;}
 p + p{margin-top:1em;}
@@ -193,5 +183,10 @@ table.equation-star { width:100%; }
 mtd.align-odd{margin-left:2em; text-align:right;}
 mtd.align-even{margin-right:2em; text-align:left;}
 dt.printshorthands{float:left; clear:left; margin-right:1em;}
+@font-face { font-family: rmfamily; src: local("Latin Modern"), url('../../NewCM10-Book.otf'); font-weight: normal;font-style: normal; }
+@font-face { font-family: rmfamily; src: local("Latin Modern"), url('../../NewCM10-Bold.otf'); font-weight: bold;font-style: normal; }
+@font-face { font-family: rmfamily; src: local("Latin Modern"), url('../../NewCM10-BookItalic.otf'); font-weight: normal;font-style: italic; }
+@font-face { font-family: rmfamily; src: local("Latin Modern"), url('../../NewCM10-BoldItalic.otf'); font-weight: bold;font-style: italic; }
+body{font-family: "rmfamily", serif;}
 /* end css.sty */
 

@@ -2,7 +2,7 @@
 #define TEMPLATE_POST_H
 
 #include <meta>
-inline constexpr auto post_preamble = std::define_static_string(R"(\documentclass[10pt]{article}
+inline constexpr auto post_preamble = std::define_static_string(R"(\documentclass[11pt]{article}
 
 \usepackage{changepage}
 \usepackage{amsmath}
@@ -15,12 +15,12 @@ inline constexpr auto post_preamble = std::define_static_string(R"(\documentclas
 \usepackage{hyperref}
 
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0pt}
+\setlength{\parskip}{0.5\baselineskip}
 
 \renewcommand{\labelitemi}{\(\hookrightarrow\)}
 \setlength{\itemsep}{0pt}
-\titleformat{\section}{\normalfont}{\thesection}{1em}{}
-
+\titleformat{\section}{\bfseries\Large}{\thesection}{1em}{}
+\titleformat{\subsection}{\bfseries\large}{\thesubsection}{1em}{}
 )");
 
 #endif

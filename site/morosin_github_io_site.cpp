@@ -73,7 +73,8 @@ static constexpr auto index_html() {
     return html{ $lang = "en-US",
         head{
             title{ "kioshi morosin"sv },
-            meta{ $name = "viewport", $content = "width=device-width,initial-scale=1", ""sv }
+            meta{ $name = "viewport", $content = "width=device-width,initial-scale=1", ""sv },
+            link{ $href = "/extra.css", $rel = "stylesheet", $type = "text/css", ""sv }
         },
         body{ $style = body_style(),
             span{ "kioshi morosin"sv },
@@ -125,7 +126,7 @@ all: )");
 	mkdir -p build; \
 	latex -interaction=nonstopmode -jobname index -output-format=dvi -output-dir=build/ -draftmode {0}.tex; \
 	biber build/index.bcf; \
-	make4ht -s -B build -c ../htstyle.cfg -d . -j index {0}.tex "fn-in,mathml,Gin-percent,charset=utf-8" "-utf8"; \
+	make4ht -u -l -s -B build -c ../htstyle.cfg -d . -j index {0}.tex "fn-in,mathml,Gin-percent,charset=utf-8" "-utf8"; \
 	rm -rf build/;
 )", posts.encoded_name), ...); 
 }
